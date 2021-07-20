@@ -1,0 +1,1 @@
+# SENinja benchmark CRC32

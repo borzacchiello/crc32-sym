@@ -1,0 +1,6 @@
+*.pyc
+
+main
+main-dbg
+main.bc
+results/*
