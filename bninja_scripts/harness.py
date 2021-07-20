@@ -26,7 +26,7 @@ def run(bv):
         start = time.time()
         try:
             _, f = run_one(bv, size)
-        except:
+        except TimeoutError:
             seninja.reset_se()
             fout.write("%s, %f, %#x\n" % (size, 3600, 0))
             fout.flush()
