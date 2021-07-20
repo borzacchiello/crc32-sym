@@ -13,7 +13,6 @@ def run_one(bv, size):
     seninja.setup_argv(
         seninja.str_to_bv(str(size), terminator=True))
 
-    s    = seninja.get_current_state()
     t, f = seninja.continue_until_branch()
 
     seninja.reset_se()
