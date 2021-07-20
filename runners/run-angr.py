@@ -54,11 +54,21 @@ def run():
             elapsed, crc = run_one(proj, size)
         except TimeoutError:
             elapsed, crc = 3600, 0
+            fout.write("%s, %f, %#x\n" % (size, elapsed, crc))
+            break
 
         print("[+] size %d done" % size)
         fout.write("%s, %f, %#x\n" % (size, elapsed, crc))
         fout.flush()
 
         size *= 2
+
+    while size <= 1024:
+        fout.write("%s, %f, %#x\n" % (size, 3600, 0))
+        fout.flush()
+
+        size *= 2
+
+    fout.close()
 
 run()

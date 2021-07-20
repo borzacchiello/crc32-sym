@@ -31,12 +31,18 @@ def run(bv):
             seninja.reset_se()
             fout.write("%s, %f, %#x\n" % (size, 3600, 0))
             fout.flush()
-            continue
+            break
         elapsed = time.time() - start
 
         print("[+] evaluating for size %d" % size)
         buf = f.solver.evaluate(seninja.get_stdin_bv(f)).as_bytes()
         fout.write("%s, %f, %#x\n" % (size, elapsed, zlib.crc32(buf)))
+        fout.flush()
+
+        size *= 2
+
+    while size <= 1024:
+        fout.write("%s, %f, %#x\n" % (size, 3600, 0))
         fout.flush()
 
         size *= 2
