@@ -10,7 +10,6 @@
 #define SEED 0xabadcafe
 
 int test_harness(char* sym_buf, char* conc_buf, int len) {
-    // compute CRC of symbolic bytes
     unsigned int conc_crc = crc32(conc_buf, len);
     unsigned int sym_crc  = crc32(sym_buf, len);
 
