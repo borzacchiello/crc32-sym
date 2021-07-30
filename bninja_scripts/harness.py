@@ -7,6 +7,9 @@ SCRIPTDIR = os.path.realpath(os.path.dirname(__file__))
 
 def run_one(bv, size):
     seninja.start_se(bv, 0x4006c0)
+    executor = seninja.get_executor()
+    executor.bncache.settings["save_unsat"] = "true"
+
     seninja.setup_argv(
         seninja.str_to_bv(str(size), terminator=True))
 
@@ -20,17 +23,18 @@ def run_one_concretize(bv, size):
 
     executor = seninja.get_executor()
     executor.bncache.settings["memory.symb_address_mode"] = "concretization"
+    executor.bncache.settings["save_unsat"] = "true"
 
     seninja.setup_argv(
         seninja.str_to_bv(str(size), terminator=True))
 
-    _ = seninja.continue_until_address(0x4006b0)
+    _ = seninja.continue_until_address(0x400697)
     print(executor.fringe)
 
     seninja.reset_se()
 
 def run(bv):
-    fout = open(os.path.join(SCRIPTDIR, "../results/seninja_data.csv"), "w")
+    fout = open(os.path.join(SCRIPTDIR, "../results/seninja_data_solver_cow.csv"), "w")
     size = 1
     while size <= 1024:
         print("[+] running size %d" % size)
@@ -48,7 +52,7 @@ def run(bv):
     fout.close()
 
 def run_conc(bv):
-    fout = open(os.path.join(SCRIPTDIR, "../results/seninja_data_conc.csv"), "w")
+    fout = open(os.path.join(SCRIPTDIR, "../results/seninja_data_solver_cow_conc.csv"), "w")
     size = 1
     while size <= 1024:
         print("[+] running size %d" % size)
