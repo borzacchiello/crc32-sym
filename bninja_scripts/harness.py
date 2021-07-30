@@ -34,9 +34,9 @@ def run_one_concretize(bv, size):
     seninja.reset_se()
 
 def run(bv):
-    fout = open(os.path.join(SCRIPTDIR, "../results/seninja_data_solver_cow.csv"), "w")
+    fout = open(os.path.join(SCRIPTDIR, "../results/seninja_data_solver_cow_2048.csv"), "w")
     size = 1
-    while size <= 1024:
+    while size <= 512:
         print("[+] running size %d" % size)
         start   = time.time()
         _, f    = run_one(bv, size)
@@ -52,7 +52,7 @@ def run(bv):
     fout.close()
 
 def run_conc(bv):
-    fout = open(os.path.join(SCRIPTDIR, "../results/seninja_data_solver_cow_conc.csv"), "w")
+    fout = open(os.path.join(SCRIPTDIR, "../results/seninja_data_solver_cow_conc_2048.csv"), "w")
     size = 1
     while size <= 1024:
         print("[+] running size %d" % size)
