@@ -1,1 +1,1 @@
-# SENinja benchmark CRC32
+# Symbolic Benchmark CRC32
