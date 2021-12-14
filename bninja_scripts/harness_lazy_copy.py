@@ -38,7 +38,7 @@ def run(bv):
     # heat up
     _ = run_one(bv, 1)
 
-    fout = open(os.path.join(SCRIPTDIR, "../results/seninja_data_no_solver_no_cow_2048.csv"), "w")
+    fout = open(os.path.join(SCRIPTDIR, "../results/seninja_data_no_solver_cow_2048.csv"), "w")
     size = 1
     while size <= 1024:
         print("[+] running size %d" % size)
