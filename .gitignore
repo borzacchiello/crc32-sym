@@ -2,3 +2,6 @@
 
 main-dbg
 main.bc
+
+results/*.csv
+
